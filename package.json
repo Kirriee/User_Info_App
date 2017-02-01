@@ -1,0 +1,23 @@
+{
+  "name": "user_info_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirriee/User_Info_App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirriee/User_Info_App/issues"
+  },
+  "homepage": "https://github.com/Kirriee/User_Info_App#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "pug": "^2.0.0-beta10"
+  }
+}
