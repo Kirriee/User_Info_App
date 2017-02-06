@@ -6,18 +6,14 @@ html
 	nav.navbar.navbar-light.bg-faded
 		a.navbar-brand(href='/') User Info App
 		button.btn.btn-danger.navbar-btn.navbar-right(style='margin-right:10')(type='button', onclick="location.href='/search';") Search User
-		button.btn.btn-warning.navbar-btn.navbar-right(style='margin-right:10')(type='button', onclick="location.href='/newUser';") Add User
+		button.btn.btn-warning.navbar-btn.navbar-right(type='button', onclick="location.href='/newUser';") Add User
 		button.btn.btn-success.navbar-btn.navbar-right(type='button', onclick="location.href='/';") All Users
 
 	.container(style='text-align:center')
-		h1 All users
-		each user in keyList
+		h4 Results of Search:
 			.card.card-block
-				h3.card-title #{user.firstname} #{user.lastname}
-				p.card-text   #{user.email}
+				p #{keyList.firstname}
+				p #{keyList.lastname}
+				p #{keyList.email}
+
 		
-	script(src='src/js/jquery-3.1.1.min.js')
-	script(src='src/js/bootstrap.min.js')
-
-
-
