@@ -5,8 +5,8 @@ html
 			//- (style="background-color:black; color:white; text-align: center; font-family: helvetica")
 	nav.navbar.navbar-light.bg-faded
 		a.navbar-brand(href='/') User Info App
-		button.btn.btn-danger.navbar-btn.navbar-right(style='margin-right:10')(type='button', onclick="location.href='/search';") Search User
-		button.btn.btn-warning.navbar-btn.navbar-right(style='margin-right:10')(type='button', onclick="location.href='/newUser';") Add User
+		button.btn.btn-danger.navbar-btn.navbar-right(style='margin-right:10',type='button', onclick="location.href='/search';") Search User
+		button.btn.btn-warning.navbar-btn.navbar-right(style='margin-right:10',type='button', onclick="location.href='/newUser';") Add User
 		button.btn.btn-success.navbar-btn.navbar-right(type='button', onclick="location.href='/';") All Users
 
 //- .container
@@ -42,8 +42,15 @@ html
 					.form-group.row
 						label.col-sm-3.col-form-label(for='inputEmail') Email
 						.col-sm-9
-							input#inputEmail.form-control(type='email', name='inputemail', placeholder='example@gmail.com' required)
+							.input-group
+								span#basic-addon1.input-group-addon @
+								|  
+								input.form-control(type='email', name='inputemail', placeholder='example@gmail.com', aria-describedby='basic-addon1' required)
+
+							//- input#inputEmail.form-control(type='email', name='inputemail', placeholder='example@gmail.com' required)
 							button.btn.btn-primary.btn-block.navbar-btn.navbar-right(type='submit') Submit
+
+							
 
 
 

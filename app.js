@@ -58,10 +58,11 @@ app.post("/matching", function(request, response){
 		}
 
 		const userList = JSON.parse(data)
-		let theOne = ""  
+		var theOne = [];
 		for (var i=0;i<userList.length; i++){
-			if (request.body.input === userList[i].firstname || request.body.input === userList[i].lastname){
-				theOne = userList[i]
+			if (userList[i].firstname.indexOf(request.body.input) > -1|| userList[i].lastname.indexOf(request.body.input) > -1){
+				// theOne = userList[i]
+				theOne.push(userList[i]);
 				// Wat als naam twee keer voorkomt?
 				// wat als user niet gevonden kan worden?
 				// &&(i===userList.length-1)
@@ -74,6 +75,7 @@ app.post("/matching", function(request, response){
 		// response.send("User not found")
 		// console.log(theOne)
 		response.render('matching', {keyList:theOne});
+		
 	} 
 	
 }

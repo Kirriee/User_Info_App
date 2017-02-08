@@ -3,12 +3,14 @@ html
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous")
 	body
 			//- (style="background-color:black; color:white; text-align: center; font-family: helvetica")
-	nav.navbar.navbar-light.bg-faded
-		a.navbar-brand(href='/') User Info App
-		button.btn.btn-danger.navbar-btn.navbar-right(style='margin-right:10')(type='button', onclick="location.href='/search';") Search User
-		button.btn.btn-warning.navbar-btn.navbar-right(style='margin-right:10')(type='button', onclick="location.href='/newUser';") Add User
-		button.btn.btn-success.navbar-btn.navbar-right(type='button', onclick="location.href='/';") All Users
-
+	nav.navbar.navbar-right.navbar-light.bg-faded
+			a.navbar-brand(href='/') User Info App
+			 
+			button.btn.btn-danger.navbar-btn(style='margin-right:10',type='button', onclick="location.href='/search';") Search User
+			button.btn.btn-warning.navbar-btn(style='margin-right:10',type='button', onclick="location.href='/newUser';") Add User
+			button.btn.btn-success.navbar-btn(type='button', onclick="location.href='/';") All Users
+				
+			
 	.container(style='text-align:center')
 		h1 All users
 		each user in keyList
