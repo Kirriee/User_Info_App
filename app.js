@@ -6,7 +6,7 @@ const app = express();
 
 
 //setting view folder
-app.set('views','./');
+app.set('views','./views');
 
 // setting view engine
 app.set('view engine', 'pug');
