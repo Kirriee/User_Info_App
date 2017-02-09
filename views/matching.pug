@@ -5,15 +5,24 @@ html
 			//- (style="background-color:black; color:white; text-align: center; font-family: helvetica")
 	nav.navbar.navbar-light.bg-faded
 		a.navbar-brand(href='/') User Info App
-		button.btn.btn-danger.navbar-btn.navbar-right(style='margin-right:10')(type='button', onclick="location.href='/search';") Search User
-		button.btn.btn-warning.navbar-btn.navbar-right(type='button', onclick="location.href='/newUser';") Add User
+		button.btn.btn-danger.navbar-btn.navbar-right(style='margin-right:10',type='button', onclick="location.href='/search';") Search User
+		button.btn.btn-warning.navbar-btn.navbar-right(style='margin-right:10',type='button', onclick="location.href='/newUser';") Add User
 		button.btn.btn-success.navbar-btn.navbar-right(type='button', onclick="location.href='/';") All Users
 
+	//- .container(style='text-align:center')
+	//- 	h4 Results of Search:
+	//- 		.card.card-block
+	//- 			p #{key.firstname}
+	//- 			p #{key.lastname}
+	//- 			p #{key.email}
+
+	
 	.container(style='text-align:center')
-		h4 Results of Search:
+		.container(style='text-align:center')
+		h1 All users
+		each user in key
 			.card.card-block
-				p #{keyList.firstname}
-				p #{keyList.lastname}
-				p #{keyList.email}
+				h3.card-title #{user.firstname} #{user.lastname}
+				p.card-text   #{user.email}
 
 		

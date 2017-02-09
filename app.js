@@ -48,6 +48,40 @@ app.get("/search", function(request, response){
 
 
 //take post request from form displaying matches users on new page
+app.post("/", (request, response) => {
+    // console.log("Hey new user:");
+    // console.log(request.body.inputfirst);
+    // console.log(request.body.inputlast);
+    console.log(request.body.inputemail);
+    
+    fs.readFile('./users.json', 'utf-8', (error, data) => {
+        if (error) {
+            throw error;
+        }
+        else {                      
+            const userList = JSON.parse(data);
+            userList.push({        //add a user
+                firstname:request.body.inputfirst,
+                lastname:request.body.inputlast,
+                email:request.body.inputemail,
+            });
+            var json = JSON.stringify(userList);
+            console.log("helloooo")
+            fs.writeFile('./users.json', json, 'utf-8', (error, data) => {
+                if (error) {
+                    throw error;
+                } 
+                // const userList = JSON.parse(data)
+                // // response.render('index', Lisa);
+                // response.render('index', {keyList:userList})
+                // var json = JSON.stringify(userList);
+            })
+            response.redirect('/') 
+        }
+        });
+});
+
+
 app.post("/matching", function(request, response){
 	console.log("ik werk")
 	console.log(request.body.input);
@@ -62,7 +96,7 @@ app.post("/matching", function(request, response){
 		for (var i=0;i<userList.length; i++){
 			if (userList[i].firstname.indexOf(request.body.input) > -1|| userList[i].lastname.indexOf(request.body.input) > -1){
 				// theOne = userList[i]
-				theOne.push(userList[i]);
+				theOne.push(userList[i])
 				// Wat als naam twee keer voorkomt?
 				// wat als user niet gevonden kan worden?
 				// &&(i===userList.length-1)
@@ -74,7 +108,7 @@ app.post("/matching", function(request, response){
 		// 	} else{
 		// response.send("User not found")
 		// console.log(theOne)
-		response.render('matching', {keyList:theOne});
+		response.render('matching', {key:theOne});
 		
 	} 
 	
