@@ -13,18 +13,18 @@ html
 	.container
 		.row
 			.col-xs-6.offset-xs-3
-				form(action='/matching', method="post" style="font-size: 15px")
+				form(action='/matching', method="post", autocomplete="off", style="font-size: 15px")
 					br
 					h4 Searchform
 					br
 					.form-group.row
 						label.col-sm-2.col-form-label(for='inputName') Name
 						.col-sm-10
-							input#inputName.form-control(type='text', name='input', placeholder='type name here')
+							input#searchbox.form-control(list='suggestion-box', type='text', name='input', placeholder='type name here')
+							datalist#suggestion-box
 							button.btn.btn-primary.btn-block.navbar-btn.navbar-right(type='submit') Submit
-					
-
-			
+		script(src="src/js/jquery-3.1.1.min.js")
+		script(src="src/js/custom.js")
 		//- 	input(type"hidden", name="_method", value="PUT")
 		//- 		p Name
 		//- 		input(type="text", name="name");

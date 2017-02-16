@@ -49,10 +49,7 @@ app.get("/search", function(request, response){
 
 //take post request from form displaying matches users on new page
 app.post("/", (request, response) => {
-    // console.log("Hey new user:");
-    // console.log(request.body.inputfirst);
-    // console.log(request.body.inputlast);
-    console.log(request.body.inputemail);
+ 
     
     fs.readFile('./users.json', 'utf-8', (error, data) => {
         if (error) {
@@ -71,14 +68,11 @@ app.post("/", (request, response) => {
                 if (error) {
                     throw error;
                 } 
-                // const userList = JSON.parse(data)
-                // // response.render('index', Lisa);
-                // response.render('index', {keyList:userList})
-                // var json = JSON.stringify(userList);
+               
             })
             response.redirect('/') 
         }
-        });
+    });
 });
 
 
@@ -86,7 +80,7 @@ app.post("/matching", function(request, response){
 	console.log("ik werk")
 	console.log(request.body.input);
 	fs.readFile('./users.json', 'utf-8', function(error, data){
-		console.log("readfile post request is working");
+		console.log("First readfile post request is working");
 		if (error){
 			throw error
 		}
@@ -97,25 +91,35 @@ app.post("/matching", function(request, response){
 			if (userList[i].firstname.indexOf(request.body.input) > -1|| userList[i].lastname.indexOf(request.body.input) > -1){
 				// theOne = userList[i]
 				theOne.push(userList[i])
-				// Wat als naam twee keer voorkomt?
-				// wat als user niet gevonden kan worden?
-				// &&(i===userList.length-1)
-		// 		{
-		// 		var test = userList[i].firstname + " " + userList[i].lastname + " " + userList[i].email;
-		// }
-		// var test =  "Name: " + userList[i].firstname + " " + "Lastname: " + userList[i].lastname + " " + "Email: " + userList[i].email;
-		// response.send(test);
-		// 	} else{
-		// response.send("User not found")
-		// console.log(theOne)
-		response.render('matching', {key:theOne});
-		
-	} 
-	
+				
+    } 
 }
+response.render('matching', {key:theOne});
 });
 });
 
+app.post('/search', function(request, response){
+    console.log(request.body.userInput);
+    let result = []
+    fs.readFile('./users.json', 'utf-8', function(error, data){
+        console.log("Second readfile post request is working");
+        if (error){
+            throw error
+        }
+
+        const userList = JSON.parse(data)
+        for (var i=0;i<userList.length; i++){
+            if (userList[i].firstname.indexOf(request.body.userInput) > -1 || userList[i].lastname.indexOf(request.body.userInput) > -1){
+                result.push(userList[i])
+                // response.send({key:theOne})
+              
+            }
+        }
+         response.send(result)
+
+         console.log(result)
+    })
+})
 
 // // do a request that renders a page and display a form
 // app.get("/search", function(request, response){
@@ -159,7 +163,7 @@ app.post("/", (request, response) => {
             })
             response.redirect('/') 
         }
-        });
+    });
 });
 app.listen(3000, function() {
 	console.log('server has started');
