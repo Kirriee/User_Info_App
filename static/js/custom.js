@@ -1,9 +1,11 @@
-$(document).ready(function(){
-	console.log("doc ready")
-	$("#searchbox").keyup(function(event){
-		// console.log(event)
+	
+var keyOld = 0 
+
+$("#searchbox").keyup(function(){
+	const keyNew = new Date();
+	if (keyNew - keyOld > 300){
+		
 		var userInput = $("#searchbox").val()
-		console.log(userInput)
 		$.post("/search", {userInput:userInput}, function(data){
 			console.log(data[0].firstname)
 			console.log(data[0].lastname)
@@ -22,6 +24,11 @@ $(document).ready(function(){
 			// data uit input (searbar gebruiken
 			//copyen van app.js post request checken wat wel of niet copyen
 
-			
-		})
+			keyOld = keyNew
+	}
+	else {
+		console.log("too many keypresses")
+	}	
+
 })
+
