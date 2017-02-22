@@ -3,7 +3,7 @@ var keyOld = 0
 
 $("#searchbox").keyup(function(){
 	const keyNew = new Date();
-	if (keyNew - keyOld > 300){
+	if (keyNew - keyOld > 3000){
 		
 		var userInput = $("#searchbox").val()
 		$.post("/search", {userInput:userInput}, function(data){
